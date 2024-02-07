@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Player with MSE</title>
+    <link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Video kaynağınızı bir data attribute olarak ekleyin -->
+    <video id="my-video" class="video-js" controls preload="auto" width="640" height="264" data-setup="{}" data-src="{% static 'Test_2/Test_2.mp4' %}"></video>
+    <script src="https://vjs.zencdn.net/7.10.2/video.js"></script>
+    <script>
+        // Video.js oynatıcıyı başlat
+        var player = videojs('my-video', {
+            controls: true,
+            autoplay: false,
+            preload: 'auto'
+        });
+
+        // Video elementini ve kaynağını seç
+        var videoElement = document.querySelector('#my-video');
+        var videoSource = videoElement.getAttribute('data-src'); // data-src attributunu oku
+
+        // Burada videoSource, Django tarafından işlenmiş statik dosya yolunu içerecektir
+        // Örnek: "/static/Test_2/Test_2.mp4"
+
+        // MSE ve SourceBuffer işlemlerini burada gerçekleştirebilirsiniz
+        // Not: Bu örnekte doğrudan video kaynağı kullanılmayacak, çünkü MSE ile dinamik bir akış yönetimi yapılacak
+    </script>
+</body> 
+</html>
